@@ -14,15 +14,15 @@ with st.sidebar:
 
 # Page for Home
 if selected == 'Home':
-    st.image("Logo PU.png", width=550)
+    st.image("assets/Logo PU.png", width=550)  # Path diperbaiki
     st.title("Welcome to Our Application")
     st.write("""
-    Hello and welcome to our Image Procesing App! We are from group 7 Industrial Engineering Class 3, with this 
-    application we hope that user can easily access information about Image Processing.
+    Hello and welcome to our Image Processing App! We are from group 7 Industrial Engineering Class 3. With this 
+    application, we hope that users can easily access information about Image Processing.
 
     This app allows you to:
     - Explore the members of our group.
-    - Upload and apply various processing to your images.
+    - Upload and apply various transformations to your images.
 
     Have fun! We hope you like it.
     """)
@@ -31,27 +31,20 @@ if selected == 'Home':
 elif selected == 'Member of Group':
     st.title('Member of Group')
 
-    # Member 1
-    st.button("Joffandry Halike")
-    st.subheader("004202300065")
-    st.image("Jofan.jpeg", width=150)
+    # Display member information
+    members = [
+        ("Joffandry Halike", "004202300065", "assets/Jofan.jpeg"),
+        ("Karenina Pasu Ronauli Rumapea", "004202300075", "assets/Karenina.jpeg"),
+        ("Raffi Rivanda Syam", "004202300011", "assets/Raffi.jpeg"),
+        ("Vivian Manuella", "004202300017", "assets/Vivian.jpeg")
+    ]
+    
+    for name, id_number, image_file in members:
+        st.subheader(name)
+        st.text(f"ID: {id_number}")
+        st.image(image_file, width=150)
 
-    # Member 2
-    st.button("Karenina Pasu Ronauli Rumapea")
-    st.subheader("004202300075")
-    st.image("Karenina.jpeg", width=150)
-
-    # Member 3
-    st.button("Raffi Rivanda Syam")
-    st.subheader("004202300011")
-    st.image("Raffi.jpeg", width=150)
-
-    # Member 4
-    st.button("Vivian Manuella")
-    st.subheader("004202300017")
-    st.image("Vivian.jpeg", width=150)
-
-# Page for Image Transportation App
+# Page for Image Processing App
 elif selected == 'Image Processing App':
     st.title('Image Processing App')
 
@@ -119,6 +112,9 @@ elif selected == 'Image Processing App':
                 file_name=f"{title.lower()}_image.jpg",
                 mime="image/jpeg"
             )
+
+    else:
+        st.write("Please upload an image to start processing.")
 
     # Closing message
     st.write("Don't forget to download your transformed images!")
